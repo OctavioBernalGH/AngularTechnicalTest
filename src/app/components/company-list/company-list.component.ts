@@ -25,7 +25,8 @@ export class CompanyListComponent implements OnInit {
     this.loading = true;
     this.companyService.getAllCompanies().subscribe({
       next: (companies) => {
-        this.companies = companies;
+        // Ordenar compañías por rating de forma descendente
+        this.companies = companies.sort((a, b) => b.rating - a.rating);
         this.loading = false;
       },
       error: (err) => {
