@@ -1,0 +1,23 @@
+<div class="song-list-container">
+  <h2>Songs</h2>
+  
+  <div *ngIf="loading" data-testid="loading-indicator">Loading...</div>
+  
+  <div *ngIf="error" class="error-message" data-testid="error-message">
+    {{ error }}
+  </div>
+  
+  <ul class="song-list" *ngIf="!loading && !error">
+    <li *ngFor="let song of songs" class="song-item" data-testid="song-item">
+      <div class="song-title">{{ song.title }}</div>
+      <div class="song-details">
+        <span>Year: {{ song.year }}</span>
+        <span>Rating: {{ song.rating }}</span>
+        <span>Duration: {{ song.duration }} seconds</span>
+      </div>
+      <div class="song-genres">
+        <span *ngFor="let genre of song.genre" class="genre-tag">{{ genre }}</span>
+      </div>
+    </li>
+  </ul>
+</div>
