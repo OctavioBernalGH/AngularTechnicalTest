@@ -1,21 +1,58 @@
 .artist-list-container {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  position: relative;
 }
 
-.artist-grid {
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.error-message {
+  color: #d32f2f;
+  padding: 10px;
+  background-color: #ffebee;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  padding-bottom: 15px;
+  scroll-behavior: smooth;
+}
+
+.carousel-wrapper::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.artist-carousel {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-flow: column;
+  grid-auto-columns: 280px;
   gap: 20px;
+  padding: 10px 5px;
 }
 
 .artist-card {
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
   transition: transform 0.3s ease;
+  height: 100%;
 }
 
 .artist-card:hover {
@@ -23,7 +60,7 @@
 }
 
 .artist-image {
-  height: 200px;
+  height: 180px;
   overflow: hidden;
 }
 
@@ -33,25 +70,85 @@
   object-fit: cover;
 }
 
-.artist-info {
-  padding: 15px;
-}
-
-.artist-info h3 {
-  margin-top: 0;
-  margin-bottom: 10px;
+.artist-name {
   font-size: 18px;
+  font-weight: bold;
+  padding: 12px 15px 8px;
+  color: #333;
 }
 
-.artist-info p {
-  margin: 5px 0;
+.artist-details {
+  padding: 0 15px 15px;
   color: #666;
+  font-size: 14px;
 }
 
-.error-message {
-  color: #d32f2f;
-  padding: 10px;
-  background-color: #ffebee;
-  border-radius: 4px;
-  margin-bottom: 15px;
+.artist-details p {
+  margin: 5px 0;
+}
+
+.carousel-controls {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .carousel-controls {
+    display: block;
+  }
+  
+  .control-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    transition: background-color 0.3s ease;
+  }
+  
+  .control-btn:hover {
+    background-color: rgba(255, 255, 255, 1);
+  }
+  
+  .control-btn.prev {
+    left: 10px;
+  }
+  
+  .control-btn.next {
+    right: 10px;
+  }
+}
+
+/* Responsive para dispositivos móviles */
+@media (max-width: 767px) {
+  .artist-carousel {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-flow: row;
+    gap: 20px;
+  }
+  
+  .carousel-wrapper {
+    overflow-x: hidden;
+  }
+  
+  .artist-card {
+    width: 100%;
+  }
+}
+
+/* Tablets y dispositivos medianos */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .artist-carousel {
+    grid-auto-columns: 230px;
+  }
 }

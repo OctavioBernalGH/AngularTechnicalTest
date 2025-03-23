@@ -7,17 +7,49 @@
     {{ error }}
   </div>
   
-  <div class="artist-grid" *ngIf="!loading && !error">
-    <div *ngFor="let artist of artists" class="artist-card" data-testid="artist-item">
-      <div class="artist-image">
-        <img [src]="artist.img || 'assets/default-artist.png'" [alt]="artist.name">
+  <div class="carousel-container" *ngIf="!loading && !error">
+    <div class="carousel-wrapper" #carouselWrapper (mouseenter)="pauseAutoScroll()" (mouseleave)="resumeAutoScroll()">
+      <div class="artist-carousel" #artistCarousel>
+        <!-- Elementos duplicados al inicio para el efecto infinito -->
+        <div *ngFor="let artist of clonedArtistsEnd" class="artist-card clone" data-testid="artist-item-clone">
+          <div class="artist-image">
+            <img [src]="artist.img || 'assets/default-artist.png'" [alt]="artist.name">
+          </div>      
+          <div class="artist-name">{{ artist.name }}</div>
+          <div class="artist-details">
+            <p>Born: {{ artist.birthdate }} in {{ artist.bornCity }}</p>
+            <p>Rating: {{ artist.rating }}/10</p>
+          </div>
+        </div>
+        
+        <!-- Elementos originales -->
+        <div *ngFor="let artist of artists" class="artist-card" data-testid="artist-item">
+          <div class="artist-image">
+            <img [src]="artist.img || 'assets/default-artist.png'" [alt]="artist.name">
+          </div>      
+          <div class="artist-name">{{ artist.name }}</div>
+          <div class="artist-details">
+            <p>Born: {{ artist.birthdate }} in {{ artist.bornCity }}</p>
+            <p>Rating: {{ artist.rating }}/10</p>
+          </div>
+        </div>
+        
+        <!-- Elementos duplicados al final para el efecto infinito -->
+        <div *ngFor="let artist of clonedArtistsStart" class="artist-card clone" data-testid="artist-item-clone">
+          <div class="artist-image">
+            <img [src]="artist.img || 'assets/default-artist.png'" [alt]="artist.name">
+          </div>      
+          <div class="artist-name">{{ artist.name }}</div>
+          <div class="artist-details">
+            <p>Born: {{ artist.birthdate }} in {{ artist.bornCity }}</p>
+            <p>Rating: {{ artist.rating }}/10</p>
+          </div>
+        </div>
       </div>
-      <div class="artist-info">
-        <h3>{{ artist.name }}</h3>
-        <p>Born: {{ artist.birthdate }} in {{ artist.bornCity }}</p>
-        <p>Rating: {{ artist.rating }}/10</p>
-        <p>Songs: {{ artist.songs.length }}</p>
-      </div>
+    </div>
+    <div class="carousel-controls">
+      <button class="control-btn prev" (click)="scrollCarousel(-1)" aria-label="Previous">❮</button>
+      <button class="control-btn next" (click)="scrollCarousel(1)" aria-label="Next">❯</button>
     </div>
   </div>
 </div>
