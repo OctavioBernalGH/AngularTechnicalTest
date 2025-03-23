@@ -125,7 +125,9 @@
         "Rock",
         "Pop",
         "Blues",
-        "Heavy"
+        "Heavy",
+        "Romance",
+        "Jazz"
       ],
       "artist": 6
     },
@@ -145,7 +147,7 @@
     },
     {
       "id": "11",
-      "title": "Hey Joe.",
+      "title": "Hey Joe",
       "year": 1962,
       "duration": 502,
       "rating": 8.39,
