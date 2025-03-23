@@ -7,17 +7,61 @@
     {{ error }}
   </div>
   
-  <ul class="song-list" *ngIf="!loading && !error">
-    <li *ngFor="let song of songs" class="song-item" data-testid="song-item">
-      <div class="song-title">{{ song.title }}</div>
-      <div class="song-details">
-        <span>Year: {{ song.year }}</span>
-        <span>Rating: {{ song.rating }}</span>
-        <span>Duration: {{ song.duration }} seconds</span>
+  <div class="carousel-container" *ngIf="!loading && !error">
+    <div class="carousel-wrapper" #carouselWrapper (mouseenter)="pauseAutoScroll()" (mouseleave)="resumeAutoScroll()">
+      <div class="song-carousel" #songCarousel>
+        <!-- Elementos duplicados al inicio para el efecto infinito -->
+        <div *ngFor="let song of clonedSongsEnd" class="song-card clone" data-testid="song-item-clone">
+          <div class="song-poster">
+            <img [src]="song.poster || 'assets/default-artist.png'" [alt]="song.title">
+          </div>      
+          <div class="song-title">{{ song.title }}</div>
+          <div class="song-details">
+            <span>Year: {{ song.year }}</span>
+            <span>Rating: {{ song.rating }}</span>
+            <span>Duration: {{ song.duration }} seconds</span>
+          </div>
+          <div class="song-genres">
+            <span *ngFor="let genre of song.genre" class="genre-tag">{{ genre }}</span>
+          </div>
+        </div>
+        
+        <!-- Elementos originales -->
+        <div *ngFor="let song of songs" class="song-card" data-testid="song-item">
+          <div class="song-poster">
+            <img [src]="song.poster || 'assets/default-artist.png'" [alt]="song.title">
+          </div>      
+          <div class="song-title">{{ song.title }}</div>
+          <div class="song-details">
+            <span>Year: {{ song.year }}</span>
+            <span>Rating: {{ song.rating }}</span>
+            <span>Duration: {{ song.duration }} seconds</span>
+          </div>
+          <div class="song-genres">
+            <span *ngFor="let genre of song.genre" class="genre-tag">{{ genre }}</span>
+          </div>
+        </div>
+        
+        <!-- Elementos duplicados al final para el efecto infinito -->
+        <div *ngFor="let song of clonedSongsStart" class="song-card clone" data-testid="song-item-clone">
+          <div class="song-poster">
+            <img [src]="song.poster || 'assets/default-artist.png'" [alt]="song.title">
+          </div>      
+          <div class="song-title">{{ song.title }}</div>
+          <div class="song-details">
+            <span>Year: {{ song.year }}</span>
+            <span>Rating: {{ song.rating }}</span>
+            <span>Duration: {{ song.duration }} seconds</span>
+          </div>
+          <div class="song-genres">
+            <span *ngFor="let genre of song.genre" class="genre-tag">{{ genre }}</span>
+          </div>
+        </div>
       </div>
-      <div class="song-genres">
-        <span *ngFor="let genre of song.genre" class="genre-tag">{{ genre }}</span>
-      </div>
-    </li>
-  </ul>
+    </div>
+    <div class="carousel-controls">
+      <button class="control-btn prev" (click)="scrollCarousel(-1)" aria-label="Previous">❮</button>
+      <button class="control-btn next" (click)="scrollCarousel(1)" aria-label="Next">❯</button>
+    </div>
+  </div>
 </div>
