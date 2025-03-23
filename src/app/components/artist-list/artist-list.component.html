@@ -1,0 +1,23 @@
+<div class="artist-list-container">
+  <h2>Artists</h2>
+  
+  <div *ngIf="loading" data-testid="loading-indicator">Loading...</div>
+  
+  <div *ngIf="error" class="error-message" data-testid="error-message">
+    {{ error }}
+  </div>
+  
+  <div class="artist-grid" *ngIf="!loading && !error">
+    <div *ngFor="let artist of artists" class="artist-card" data-testid="artist-item">
+      <div class="artist-image">
+        <img [src]="artist.img || 'assets/default-artist.png'" [alt]="artist.name">
+      </div>
+      <div class="artist-info">
+        <h3>{{ artist.name }}</h3>
+        <p>Born: {{ artist.birthdate }} in {{ artist.bornCity }}</p>
+        <p>Rating: {{ artist.rating }}/10</p>
+        <p>Songs: {{ artist.songs.length }}</p>
+      </div>
+    </div>
+  </div>
+</div>
