@@ -22,4 +22,17 @@ export class ArtistService {
   getArtistsByCity(city: string): Observable<Artist[]> {
     return this.http.get<Artist[]>(`${this.apiUrl}?bornCity=${city}`);
   }
+
+  // Nuevos métodos para CRUD
+  createArtist(artist: Artist): Observable<Artist> {
+    return this.http.post<Artist>(this.apiUrl, artist);
+  }
+
+  updateArtist(artist: Artist): Observable<Artist> {
+    return this.http.put<Artist>(`${this.apiUrl}/${artist.id}`, artist);
+  }
+
+  deleteArtist(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }

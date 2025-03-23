@@ -358,20 +358,6 @@ export class SongListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.selectedSong = song;
     this.showInfoModal = true;
     
-    // Cargar los datos del artista si existe un ID de artista
-    if (song.artist) {
-      this.artistService.getArtistById(song.artist).subscribe({
-        next: (artist) => {
-          this.selectedArtist = artist;
-        },
-        error: (err) => {
-          console.error('Error loading artist:', err);
-          this.selectedArtist = null;
-        }
-      });
-    } else {
-      this.selectedArtist = null;
-    }
   }
   
   // Modificar el método closeInfoModal

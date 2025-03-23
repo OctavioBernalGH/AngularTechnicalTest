@@ -31,7 +31,7 @@ export class SongService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-  getSongsByArtistId(artistId: number): Observable<Song[]> {
+  getSongsByArtist(artistId: number): Observable<Song[]> {
     return this.http.get<Song[]>(`${this.apiUrl}?artist=${artistId}`);
   }
 
