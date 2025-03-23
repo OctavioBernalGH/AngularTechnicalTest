@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Song } from '../../models/song.model';
 import { SongService } from '../../services/song.service';
+import { Artist } from '../../models/artist.model';
+import { ArtistService } from '../../services/artist.service';
 
 @Component({
   selector: 'app-song-list',
@@ -39,10 +41,10 @@ export class SongListComponent implements OnInit, AfterViewInit, OnDestroy {
   ];
   genreError = false;
 
-  constructor(
-    private songService: SongService,
-    private fb: FormBuilder
-  ) { }
+  // constructor(
+  //   private songService: SongService,
+  //   private fb: FormBuilder
+  // ) { }
 
   ngOnInit(): void {
     this.loadSongs();
@@ -341,17 +343,42 @@ export class SongListComponent implements OnInit, AfterViewInit, OnDestroy {
   // Añadir estas propiedades
   showInfoModal = false;
   selectedSong: Song | null = null;
+  selectedArtist: Artist | null = null;
   
-  // Añadir estos métodos
+  // Modificar el constructor para inyectar el servicio de artistas
+  constructor(
+    private songService: SongService,
+    private artistService: ArtistService,
+    private fb: FormBuilder
+  ) { }
+  
+  // Modificar el método openInfoModal
   openInfoModal(song: Song): void {
     this.pauseAutoScroll();
     this.selectedSong = song;
     this.showInfoModal = true;
+    
+    // Cargar los datos del artista si existe un ID de artista
+    if (song.artist) {
+      this.artistService.getArtistById(song.artist).subscribe({
+        next: (artist) => {
+          this.selectedArtist = artist;
+        },
+        error: (err) => {
+          console.error('Error loading artist:', err);
+          this.selectedArtist = null;
+        }
+      });
+    } else {
+      this.selectedArtist = null;
+    }
   }
   
+  // Modificar el método closeInfoModal
   closeInfoModal(): void {
     this.showInfoModal = false;
     this.selectedSong = null;
+    this.selectedArtist = null;
     this.resumeAutoScroll();
   }
   

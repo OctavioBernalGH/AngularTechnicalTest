@@ -1,12 +1,12 @@
 <div class="song-list-container">
   <h2>Songs</h2>
-  
+
   <div *ngIf="loading" data-testid="loading-indicator">Loading...</div>
-  
+
   <div *ngIf="error" class="error-message" data-testid="error-message">
     {{ error }}
   </div>
-  
+
   <div class="carousel-container" *ngIf="!loading && !error">
     <div class="carousel-wrapper" #carouselWrapper (mouseenter)="pauseAutoScroll()" (mouseleave)="resumeAutoScroll()">
       <div class="song-carousel" #songCarousel>
@@ -14,7 +14,7 @@
         <div *ngFor="let song of clonedSongsEnd" class="song-card clone" data-testid="song-item-clone">
           <div class="song-poster">
             <img [src]="song.poster || 'assets/default-artist.png'" [alt]="song.title">
-          </div>      
+          </div>
           <div class="song-title">{{ song.title }}</div>
           <div class="song-details">
             <span>Year: {{ song.year }}</span>
@@ -34,12 +34,12 @@
             <button class="delete-btn" (click)="deleteSong(song.id)">Delete</button>
           </div>
         </div>
-        
+
         <!-- Elementos originales -->
         <div *ngFor="let song of songs" class="song-card" data-testid="song-item">
           <div class="song-poster">
             <img [src]="song.poster || 'assets/default-artist.png'" [alt]="song.title">
-          </div>      
+          </div>
           <div class="song-title">{{ song.title }}</div>
           <div class="song-details">
             <span>Year: {{ song.year }}</span>
@@ -59,12 +59,12 @@
             <button class="delete-btn" (click)="deleteSong(song.id)">Delete</button>
           </div>
         </div>
-        
+
         <!-- Elementos duplicados al final para el efecto infinito -->
         <div *ngFor="let song of clonedSongsStart" class="song-card clone" data-testid="song-item-clone">
           <div class="song-poster">
             <img [src]="song.poster || 'assets/default-artist.png'" [alt]="song.title">
-          </div>      
+          </div>
           <div class="song-title">{{ song.title }}</div>
           <div class="song-details">
             <span>Year: {{ song.year }}</span>
@@ -105,7 +105,7 @@
           Title is required
         </div>
       </div>
-      
+
       <div class="form-group">
         <label for="year">Year</label>
         <input type="number" id="year" formControlName="year">
@@ -113,7 +113,7 @@
           Valid year is required
         </div>
       </div>
-      
+
       <div class="form-group">
         <label for="duration">Duration (seconds)</label>
         <input type="number" id="duration" formControlName="duration">
@@ -121,7 +121,7 @@
           Valid duration is required
         </div>
       </div>
-      
+
       <div class="form-group">
         <label for="rating">Rating</label>
         <input type="number" id="rating" formControlName="rating" step="0.01" min="0" max="10">
@@ -129,24 +129,23 @@
           Rating must be between 0 and 10
         </div>
       </div>
-      
+
       <div class="form-group">
         <label for="poster">Poster URL</label>
         <input type="text" id="poster" formControlName="poster">
       </div>
-      
+
       <div class="form-group">
         <label>Genres</label>
         <div class="genres-container">
           <div *ngFor="let genre of availableGenres; let i = index" class="genre-checkbox">
-            <input type="checkbox" [id]="'genre-' + i" [value]="genre" 
-                  (change)="onGenreChange($event)" 
-                  [checked]="selectedGenres.includes(genre)">
+            <input type="checkbox" [id]="'genre-' + i" [value]="genre" (change)="onGenreChange($event)"
+              [checked]="selectedGenres.includes(genre)">
             <label [for]="'genre-' + i">{{ genre }}</label>
           </div>
         </div>
       </div>
-      
+
       <div class="form-actions">
         <button type="button" class="cancel-btn" (click)="closeModal()">Cancel</button>
         <button type="submit" class="save-btn" [disabled]="songForm.invalid">Save</button>
@@ -195,39 +194,51 @@
 <!-- Modal de información detallada -->
 <div class="modal-overlay" *ngIf="showInfoModal">
   <div class="modal-content info-modal" (click)="$event.stopPropagation()">
-    <h3>Song Details</h3>
+    <h3 *ngIf="selectedSong">{{ selectedSong.title }}</h3>
+    <div class="info-content" *ngIf="selectedSong" style="text-align: center; margin-bottom: 20px; color: #2196f3; font-weight: 700; font-size: 1.5em;">
+    </div>
     <div class="info-content" *ngIf="selectedSong">
+
       <div class="info-poster">
         <img [src]="selectedSong.poster || 'assets/default-artist.png'" [alt]="selectedSong.title">
       </div>
+
       <div class="info-details">
-        <h4>{{ selectedSong.title }}</h4>
-        
         <div class="info-row">
           <span class="info-label">Year:</span>
           <span class="info-value">{{ selectedSong.year }}</span>
         </div>
-        
+
         <div class="info-row">
           <span class="info-label">Rating:</span>
           <span class="info-value">{{ selectedSong.rating }} / 10</span>
         </div>
-        
+
         <div class="info-row">
           <span class="info-label">Duration:</span>
-          <span class="info-value">{{ selectedSong.duration }} seconds ({{ formatDuration(selectedSong.duration) }})</span>
+          <span class="info-value">{{ selectedSong.duration }} seconds ({{ formatDuration(selectedSong.duration)
+            }})</span>
         </div>
-        
+
         <div class="info-row">
           <span class="info-label">Genres:</span>
           <div class="info-genres">
             <span *ngFor="let genre of selectedSong.genre" class="genre-tag">{{ genre }}</span>
           </div>
         </div>
-        
+
         <div class="info-row" *ngIf="selectedSong.artist">
-          <span class="info-label">Artist ID:</span>
-          <span class="info-value">{{ selectedSong.artist }}</span>
+          <span class="info-label">Artist:</span>
+          <div *ngIf="selectedArtist; else loadingArtist" class="artist-info">
+            <div class="artist-name">{{ selectedArtist.name }}</div>
+            <div class="artist-details">
+              <span>Country: {{ selectedArtist.bornCity }}</span>
+              <span *ngIf="selectedArtist.birthdate">Birthdate: {{ selectedArtist.birthdate | date }}</span>
+            </div>
+          </div>
+          <ng-template #loadingArtist>
+            <span class="info-value">Loading artist information...</span>
+          </ng-template>
         </div>
       </div>
     </div>
