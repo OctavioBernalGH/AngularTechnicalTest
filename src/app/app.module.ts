@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SongService } from './services/song.service';
 import { ArtistService } from './services/artist.service';
 import { CompanyService } from './services/company.service';
+import { SongListComponent } from './components/song-list/song-list.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { CompanyService } from './services/company.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppComponent 
+    AppComponent,
+    SongListComponent
   ],
   providers: [
     SongService,
