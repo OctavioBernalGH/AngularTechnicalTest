@@ -7,17 +7,29 @@
     {{ error }}
   </div>
   
-  <div class="company-list" *ngIf="!loading && !error">
-    <div *ngFor="let company of companies" class="company-item" data-testid="company-item">
+  <div class="company-grid" *ngIf="!loading && !error">
+    <div *ngFor="let company of companies" class="company-card" data-testid="company-item">
       <div class="company-header">
         <h3>{{ company.name }}</h3>
-        <span class="company-rating">{{ company.rating }}/10</span>
+        <div class="rating-badge">{{ company.rating.toFixed(1) }}</div>
       </div>
       <div class="company-details">
-        <p><strong>Country:</strong> {{ company.country }}</p>
-        <p><strong>Founded:</strong> {{ company.createYear }}</p>
-        <p><strong>Employees:</strong> {{ company.employees }}</p>
-        <p><strong>Songs:</strong> {{ company.songs.length }}</p>
+        <div class="detail-item">
+          <span class="label">Country:</span>
+          <span class="value">{{ company.country }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Founded:</span>
+          <span class="value">{{ company.createYear }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Employees:</span>
+          <span class="value">{{ company.employees }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Songs:</span>
+          <span class="value">{{ company.songs.length }}</span>
+        </div>
       </div>
     </div>
   </div>
