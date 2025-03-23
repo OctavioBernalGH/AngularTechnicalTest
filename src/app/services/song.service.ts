@@ -19,6 +19,18 @@ export class SongService {
     return this.http.get<Song>(`${this.apiUrl}/${id}`);
   }
 
+  createSong(song: Song): Observable<Song> {
+    return this.http.post<Song>(this.apiUrl, song);
+  }
+
+  updateSong(song: Song): Observable<Song> {
+    return this.http.put<Song>(`${this.apiUrl}/${song.id}`, song);
+  }
+
+  deleteSong(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
   getSongsByArtistId(artistId: number): Observable<Song[]> {
     return this.http.get<Song[]>(`${this.apiUrl}?artist=${artistId}`);
   }
