@@ -20,17 +20,28 @@
             <p>Born: {{ artist.birthdate }} in {{ artist.bornCity }}</p>
             <p>Rating: {{ artist.rating }}/10</p>
           </div>
+          <div class="artist-actions">
+            <button class="info-btn">Info</button>
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+          </div>
         </div>
         
         <!-- Elementos originales -->
         <div *ngFor="let artist of artists" class="artist-card" data-testid="artist-item">
           <div class="artist-image">
             <img [src]="artist.img || 'assets/default-artist.png'" [alt]="artist.name">
-          </div>      
+          </div>
           <div class="artist-name">{{ artist.name }}</div>
           <div class="artist-details">
-            <p>Born: {{ artist.birthdate }} in {{ artist.bornCity }}</p>
+            <span>Country: {{ artist.bornCity }}</span>
+            <span *ngIf="artist.birthdate">Birthdate: {{ artist.birthdate | date }}</span>
             <p>Rating: {{ artist.rating }}/10</p>
+          </div>
+          <div class="artist-actions">
+            <button class="info-btn">Info</button>
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
           </div>
         </div>
         
@@ -43,6 +54,11 @@
           <div class="artist-details">
             <p>Born: {{ artist.birthdate }} in {{ artist.bornCity }}</p>
             <p>Rating: {{ artist.rating }}/10</p>
+          </div>
+          <div class="artist-actions">
+            <button class="info-btn">Info</button>
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
           </div>
         </div>
       </div>
