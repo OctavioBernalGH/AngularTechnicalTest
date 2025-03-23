@@ -1,0 +1,24 @@
+<div class="company-list-container">
+  <h2>Record Companies</h2>
+  
+  <div *ngIf="loading" data-testid="loading-indicator">Loading...</div>
+  
+  <div *ngIf="error" class="error-message" data-testid="error-message">
+    {{ error }}
+  </div>
+  
+  <div class="company-list" *ngIf="!loading && !error">
+    <div *ngFor="let company of companies" class="company-item" data-testid="company-item">
+      <div class="company-header">
+        <h3>{{ company.name }}</h3>
+        <span class="company-rating">{{ company.rating }}/10</span>
+      </div>
+      <div class="company-details">
+        <p><strong>Country:</strong> {{ company.country }}</p>
+        <p><strong>Founded:</strong> {{ company.createYear }}</p>
+        <p><strong>Employees:</strong> {{ company.employees }}</p>
+        <p><strong>Songs:</strong> {{ company.songs.length }}</p>
+      </div>
+    </div>
+  </div>
+</div>
