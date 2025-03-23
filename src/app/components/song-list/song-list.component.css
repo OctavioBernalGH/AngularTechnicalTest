@@ -187,6 +187,27 @@ h2 {
   cursor: pointer;
   transition: all 0.3s;
   flex: 1;
+  background-color: #2196f3;  /* Color azul estándar para todos los botones */
+  color: white;
+}
+
+.edit-btn:hover, .delete-btn:hover, .info-btn:hover {
+  background-color: #0d8aee;  /* Color azul más oscuro al hacer hover */
+  box-shadow: 0 2px 5px rgba(33, 150, 243, 0.3);
+}
+
+/* Eliminar los estilos específicos que sobrescriben los colores */
+/* 
+.info-btn {
+  border-bottom: 3px solid #3498db;
+}
+
+.edit-btn {
+  border-bottom: 3px solid #2ecc71;
+}
+
+.delete-btn {
+  border-bottom: 3px solid #e74c3c;
 }
 
 .info-btn {
@@ -198,6 +219,25 @@ h2 {
   background-color: #5e35b1;
   box-shadow: 0 2px 5px rgba(103, 58, 183, 0.3);
 }
+
+.edit-btn {
+  background-color: #2196f3;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #0d8aee;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #e53935;
+}
+*/
 
 /* Estilos para el modal de información */
 .info-modal {
@@ -414,12 +454,12 @@ h2 {
 }
 
 .delete-btn {
-  background-color: #f44336;
+  background-color: #2196f3;
   color: white;
 }
 
 .delete-btn:hover {
-  background-color: #e53935;
+  background-color: #0d8aee;
 }
 
 /* Estilos para el modal */
@@ -686,7 +726,7 @@ h2 {
 }
 
 .confirm-modal h3 {
-  color: #f44336;
+  color: #2196f3; /* Cambiar a azul para mantener consistencia */
   margin-bottom: 15px;
   font-size: 26px;
   font-weight: 600;
@@ -701,7 +741,7 @@ h2 {
 }
 
 .delete-confirm-btn {
-  background-color: #f44336;
+  background-color: #2196f3;
   color: white;
   padding: 12px 30px;
   border: none;
@@ -714,8 +754,8 @@ h2 {
 }
 
 .delete-confirm-btn:hover {
-  background-color: #e53935;
-  box-shadow: 0 4px 8px rgba(244, 67, 54, 0.3);
+  background-color: #0d8aee;
+  box-shadow: 0 4px 8px rgba(33, 150, 243, 0.3);
   transform: translateY(-2px);
 }
 .artist-info {
