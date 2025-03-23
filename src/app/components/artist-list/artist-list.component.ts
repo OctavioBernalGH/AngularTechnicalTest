@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Artist } from '../../models/artist.model';
 import { ArtistService } from '../../services/artist.service';
 
 @Component({
   selector: 'app-artist-list',
   templateUrl: './artist-list.component.html',
-  styleUrls: ['./artist-list.component.css']
+  styleUrls: ['./artist-list.component.css'],
+  standalone: true,
+  imports: [CommonModule]
 })
 export class ArtistListComponent implements OnInit {
   artists: Artist[] = [];

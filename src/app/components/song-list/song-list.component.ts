@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Song } from '../../models/song.model';
 import { SongService } from '../../services/song.service';
 
 @Component({
   selector: 'app-song-list',
   templateUrl: './song-list.component.html',
-  styleUrls: ['./song-list.component.css']
+  styleUrls: ['./song-list.component.css'],
+  standalone: true,
+  imports: [CommonModule]
 })
 export class SongListComponent implements OnInit {
   songs: Song[] = [];
