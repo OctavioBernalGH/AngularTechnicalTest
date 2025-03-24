@@ -183,10 +183,10 @@
 <div class="modal-overlay" *ngIf="showSuccessModal">
   <div class="modal-content success-modal">
     <div class="success-icon">✓</div>
-    <h3>Success!</h3>
-    <p>The song has been updated successfully.</p>
+    <h3>{{ 'COMMON.SUCCESS' | translate }}</h3>
+    <p>{{ 'SONGS.UPDATE_SUCCESS' | translate }}</p>
     <div class="form-actions">
-      <button class="success-btn" (click)="reloadPage()">Accept</button>
+      <button class="success-btn" (click)="reloadPage()">{{ 'COMMON.ACCEPT' | translate }}</button>
     </div>
   </div>
 </div>
@@ -233,11 +233,11 @@
             <div class="artist-name">{{ selectedArtist.name }}</div>
             <div class="artist-details">
               <span>{{ 'ARTISTS.COUNTRY' | translate }}: {{ selectedArtist.bornCity }}</span>
-              <span *ngIf="selectedArtist.birthdate">{{ 'ARTISTS.BIRTHDATE' | translate }}: {{ selectedArtist.birthdate | date }}</span>
+              <span *ngIf="selectedArtist.birthdate">{{ 'ARTISTS.BIRTHDATE' | translate }}: {{ selectedArtist.birthdate }}</span>
             </div>
           </div>
           <ng-template #loadingArtist>
-            <span class="info-value">Loading artist information...</span>
+            <span class="info-value">{{ 'ARTISTS.LOADING_ARTISTS' | translate }}</span>
           </ng-template>
         </div>
       </div>

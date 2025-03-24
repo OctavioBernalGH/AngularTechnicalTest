@@ -8,7 +8,7 @@
     "EDIT": "Editar",
     "DELETE": "Eliminar",
     "INFO": "Información",
-    "SUCCESS": "Éxito!"	,
+    "SUCCESS": "Éxito!",
     "ACCEPT": "Aceptar"
   },
   "SONGS": {
@@ -25,7 +25,8 @@
     "SONG_INFO": "Información de la Canción",
     "CONFIRM_DELETE": "¿Estás seguro de que quieres eliminar esta canción?",
     "DELETE_SUCCESS": "Canción eliminada con éxito",
-    "UPDATE_SUCCESS": "Canción actualizada con éxito"
+    "UPDATE_SUCCESS": "Canción actualizada con éxito",
+    "LOADING_SONGS": "Loading songs information..."
   },
   "ARTISTS": {
     "TITLE": "Artistas",
@@ -34,7 +35,8 @@
     "RATING": "Puntuación",
     "ARTIST_INFO": "Información del Artista",
     "NAME": "Nombre",
-    "SONGS": "Canciones"
+    "SONGS": "Canciones",
+    "LOADING_ARTISTS": "Loading artist information..."
   },
   "COMPANIES": {
     "TITLE": "Empresas discograficas",
@@ -43,6 +45,7 @@
     "COMPANY_INFO": "Información de la Empresa",
     "FOUNDED": "Antigüedad",
     "EMPLOYEES": "Empleados",
-    "SONGS": "Canciones"
+    "SONGS": "Canciones",
+    "LOADING_COMPANIES": "Loading songs information..."
   }
 }

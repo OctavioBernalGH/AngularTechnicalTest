@@ -1,7 +1,7 @@
 <div class="company-list-container">
   <h2>{{ 'COMPANIES.TITLE' | translate  }}</h2>
   
-  <div *ngIf="loading" data-testid="loading-indicator">Loading...</div>
+  <div *ngIf="loading" data-testid="loading-indicator">{{ 'COMPANIES.LOADING_COMPANIES' | translate }}</div>
   
   <div *ngIf="error" class="error-message" data-testid="error-message">
     {{ error }}

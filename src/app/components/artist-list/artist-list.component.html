@@ -1,7 +1,7 @@
 <div class="artist-list-container">
   <h2>{{ 'ARTISTS.TITLE' | translate }}</h2>
   
-  <div *ngIf="loading" data-testid="loading-indicator">Loading...</div>
+  <div *ngIf="loading" data-testid="loading-indicator">{{ 'SONGS.LOADING_SONGS' | translate }}</div>
   
   <div *ngIf="error" class="error-message" data-testid="error-message">
     {{ error }}
