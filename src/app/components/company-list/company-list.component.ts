@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Company } from '../../models/company.model';
 import { CompanyService } from '../../services/company.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-company-list',
   templateUrl: './company-list.component.html',
   styleUrls: ['./company-list.component.css'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule, TranslateModule]
 })
 export class CompanyListComponent implements OnInit {
   companies: Company[] = [];

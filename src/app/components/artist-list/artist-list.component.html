@@ -1,5 +1,5 @@
 <div class="artist-list-container">
-  <h2>Artists</h2>
+  <h2>{{ 'ARTISTS.TITLE' | translate }}</h2>
   
   <div *ngIf="loading" data-testid="loading-indicator">Loading...</div>
   
@@ -10,20 +10,20 @@
   <div class="carousel-container" *ngIf="!loading && !error">
     <div class="carousel-wrapper" #carouselWrapper (mouseenter)="pauseAutoScroll()" (mouseleave)="resumeAutoScroll()">
       <div class="artist-carousel" #artistCarousel>
-        <!-- Elementos duplicados al inicio para el efecto infinito -->
         <div *ngFor="let artist of clonedArtistsEnd" class="artist-card clone" data-testid="artist-item-clone">
           <div class="artist-image">
             <img [src]="artist.img || 'assets/default-artist.png'" [alt]="artist.name">
           </div>      
           <div class="artist-name">{{ artist.name }}</div>
           <div class="artist-details">
-            <p>Born: {{ artist.birthdate }} in {{ artist.bornCity }}</p>
-            <p>Rating: {{ artist.rating }}/10</p>
+            <p>{{ 'ARTISTS.BIRTHDATE' | translate }}: {{ artist.birthdate }}</p>
+            <p>{{ 'ARTISTS.COUNTRY' | translate }}: {{ artist.bornCity }}</p>
+            <p>{{ 'ARTISTS.RATING' | translate }}: {{ artist.rating }}/10</p>
           </div>
           <div class="artist-actions">
-            <button class="info-btn">Info</button>
-            <button class="edit-btn">Edit</button>
-            <button class="delete-btn">Delete</button>
+            <button class="info-btn">{{ 'COMMON.INFO' | translate }}</button>
+            <button class="edit-btn">{{ 'COMMON.EDIT' | translate }}</button>
+            <button class="delete-btn">{{ 'COMMON.DELETE' | translate }}</button>
           </div>
         </div>
         
@@ -34,31 +34,31 @@
           </div>
           <div class="artist-name">{{ artist.name }}</div>
           <div class="artist-details">
-            <span>Country: {{ artist.bornCity }}</span>
-            <span *ngIf="artist.birthdate">Birthdate: {{ artist.birthdate | date }}</span>
-            <p>Rating: {{ artist.rating }}/10</p>
+            <p>{{ 'ARTISTS.BIRTHDATE' | translate }}: {{ artist.birthdate }}</p>
+            <p>{{ 'ARTISTS.COUNTRY' | translate }}: {{ artist.bornCity }}</p>
+            <p>{{ 'ARTISTS.RATING' | translate }}: {{ artist.rating }}/10</p>
           </div>
           <div class="artist-actions">
-            <button class="info-btn">Info</button>
-            <button class="edit-btn">Edit</button>
-            <button class="delete-btn">Delete</button>
+            <button class="info-btn">{{ 'COMMON.INFO' | translate }}</button>
+            <button class="edit-btn">{{ 'COMMON.EDIT' | translate }}</button>
+            <button class="delete-btn">{{ 'COMMON.DELETE' | translate }}</button>
           </div>
         </div>
         
-        <!-- Elementos duplicados al final para el efecto infinito -->
         <div *ngFor="let artist of clonedArtistsStart" class="artist-card clone" data-testid="artist-item-clone">
           <div class="artist-image">
             <img [src]="artist.img || 'assets/default-artist.png'" [alt]="artist.name">
           </div>      
           <div class="artist-name">{{ artist.name }}</div>
           <div class="artist-details">
-            <p>Born: {{ artist.birthdate }} in {{ artist.bornCity }}</p>
-            <p>Rating: {{ artist.rating }}/10</p>
+            <p>{{ 'ARTISTS.BIRTHDATE' | translate }}: {{ artist.birthdate }}</p>
+            <p>{{ 'ARTISTS.COUNTRY' | translate }}: {{ artist.bornCity }}</p>
+            <p>{{ 'ARTISTS.RATING' | translate }}: {{ artist.rating }}/10</p>
           </div>
           <div class="artist-actions">
-            <button class="info-btn">Info</button>
-            <button class="edit-btn">Edit</button>
-            <button class="delete-btn">Delete</button>
+            <button class="info-btn">{{ 'COMMON.INFO' | translate }}</button>
+            <button class="edit-btn">E{{ 'COMMON.EDIT' | translate }}dit</button>
+            <button class="delete-btn">{{ 'COMMON.DELETE' | translate }}</button>
           </div>
         </div>
       </div>

@@ -1,0 +1,48 @@
+{
+  "COMMON": {
+    "LOADING": "Cargando...",
+    "ERROR": "Ha ocurrido un error",
+    "CLOSE": "Cerrar",
+    "SAVE": "Guardar",
+    "CANCEL": "Cancelar",
+    "EDIT": "Editar",
+    "DELETE": "Eliminar",
+    "INFO": "Información",
+    "SUCCESS": "Éxito!"	,
+    "ACCEPT": "Aceptar"
+  },
+  "SONGS": {
+    "TITLE": "Canciones",
+    "YEAR": "Año",
+    "DURATION": "Duración",
+    "SECONDS": "segundos",
+    "RATING": "Puntuación",
+    "GENRE": "Género",
+    "ARTIST": "Artista",
+    "POSTER": "URL de la portada",
+    "EDIT_SONG": "Editar Canción",
+    "DELETE_SONG": "Eliminar Canción",
+    "SONG_INFO": "Información de la Canción",
+    "CONFIRM_DELETE": "¿Estás seguro de que quieres eliminar esta canción?",
+    "DELETE_SUCCESS": "Canción eliminada con éxito",
+    "UPDATE_SUCCESS": "Canción actualizada con éxito"
+  },
+  "ARTISTS": {
+    "TITLE": "Artistas",
+    "COUNTRY": "País",
+    "BIRTHDATE": "Fecha de nacimiento",
+    "RATING": "Puntuación",
+    "ARTIST_INFO": "Información del Artista",
+    "NAME": "Nombre",
+    "SONGS": "Canciones"
+  },
+  "COMPANIES": {
+    "TITLE": "Empresas discograficas",
+    "NAME": "Nombre",
+    "COUNTRY": "País",
+    "COMPANY_INFO": "Información de la Empresa",
+    "FOUNDED": "Antigüedad",
+    "EMPLOYEES": "Empleados",
+    "SONGS": "Canciones"
+  }
+}

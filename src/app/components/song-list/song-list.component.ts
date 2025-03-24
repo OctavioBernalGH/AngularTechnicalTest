@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, OnDestroy, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 import { Song } from '../../models/song.model';
 import { SongService } from '../../services/song.service';
 import { Artist } from '../../models/artist.model';
@@ -11,7 +12,7 @@ import { ArtistService } from '../../services/artist.service';
   templateUrl: './song-list.component.html',
   styleUrls: ['./song-list.component.css'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule]
+  imports: [CommonModule, ReactiveFormsModule, TranslateModule]
 })
 export class SongListComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('carouselWrapper') carouselWrapper!: ElementRef;
@@ -34,17 +35,11 @@ export class SongListComponent implements OnInit, AfterViewInit, OnDestroy {
   songForm!: FormGroup;
   currentSongId: number | null = null;
   selectedGenres: string[] = [];
-  // Añadir esta propiedad después de availableGenres
   availableGenres: string[] = [
     'Pop', 'Rock', 'Alternative', 'Blues', 'Heavy', 'Chill', 
     'Romance', 'Psychedelic rock', 'Jazz', 'Classical', 'Electronic'
   ];
   genreError = false;
-
-  // constructor(
-  //   private songService: SongService,
-  //   private fb: FormBuilder
-  // ) { }
 
   ngOnInit(): void {
     this.loadSongs();
@@ -184,8 +179,6 @@ export class SongListComponent implements OnInit, AfterViewInit, OnDestroy {
     const wrapper = this.carouselWrapper.nativeElement;
     const cardWidth = 280;
     const gapWidth = 20;
-    
-
     const scrollDistance = direction * (cardWidth + gapWidth) * 2; 
     
     wrapper.scrollBy({
@@ -263,13 +256,11 @@ export class SongListComponent implements OnInit, AfterViewInit, OnDestroy {
   
   saveSong(): void {
     if (this.songForm.invalid || !this.currentSongId) {
-      // Marcar todos los campos como tocados para mostrar errores
       Object.keys(this.songForm.controls).forEach(key => {
         const control = this.songForm.get(key);
         control?.markAsTouched();
       });
       
-      // Verificar si hay géneros seleccionados
       if (this.selectedGenres.length === 0) {
         this.genreError = true;
       }
@@ -277,7 +268,6 @@ export class SongListComponent implements OnInit, AfterViewInit, OnDestroy {
       return;
     }
     
-    // Verificar si hay géneros seleccionados
     if (this.selectedGenres.length === 0) {
       this.genreError = true;
       return;
@@ -358,6 +348,20 @@ export class SongListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.selectedSong = song;
     this.showInfoModal = true;
     
+    // Fetch artist information
+    if (song.artist) {
+      this.artistService.getArtistById(song.artist).subscribe({
+        next: (artist) => {
+          this.selectedArtist = artist;
+        },
+        error: (err) => {
+          console.error('Error loading artist:', err);
+          this.selectedArtist = null;
+        }
+      });
+    } else {
+      this.selectedArtist = null;
+    }
   }
   
   // Modificar el método closeInfoModal

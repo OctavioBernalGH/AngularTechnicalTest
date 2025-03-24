@@ -1,5 +1,5 @@
 <div class="company-list-container">
-  <h2>Record Companies</h2>
+  <h2>{{ 'COMPANIES.TITLE' | translate  }}</h2>
   
   <div *ngIf="loading" data-testid="loading-indicator">Loading...</div>
   
@@ -15,19 +15,19 @@
       </div>
       <div class="company-details">
         <div class="detail-item">
-          <span class="label">Country:</span>
+          <span class="label">{{ 'COMPANIES.COUNTRY' | translate  }}:</span>
           <span class="value">{{ company.country }}</span>
         </div>
         <div class="detail-item">
-          <span class="label">Founded:</span>
+          <span class="label">{{ 'COMPANIES.FOUNDED' | translate  }}:</span>
           <span class="value">{{ company.createYear }}</span>
         </div>
         <div class="detail-item">
-          <span class="label">Employees:</span>
+          <span class="label">{{ 'COMPANIES.EMPLOYEES' | translate  }}:</span>
           <span class="value">{{ company.employees }}</span>
         </div>
         <div class="detail-item">
-          <span class="label">Songs:</span>
+          <span class="label">{{ 'COMPANIES.SONGS' | translate  }}:</span>
           <span class="value">{{ company.songs.length }}</span>
         </div>
       </div>

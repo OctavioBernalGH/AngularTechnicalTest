@@ -181,9 +181,13 @@
 <main class="main">
   <div class="app-container">
     <header>
-      <h1>Music Database</h1>
+      <h1 style="text-align: center;">Angular Technical Test</h1>
+      <div style="text-align: center; margin-top: 1rem; display: flex; justify-content: center; align-items: center; column-gap: 0.2rem;">
+        <button class="language-btn" (click)="switchLanguage('en')">English</button>
+        <button class="language-btn" (click)="switchLanguage('es')">Español</button>
+      </div>  
     </header>
-    
+
     <main>
       <app-song-list></app-song-list>
       <app-artist-list></app-artist-list>
@@ -191,9 +195,12 @@
     </main>
     
     <footer>
-      <p>Angular Technical Test - Music Database</p>
+      <p style="text-align: center; font-weight: 600; margin-top: 2rem;">Angular Technical Test | Octavio Bernal Vilana</p>
     </footer>
   </div>
 </main>
+
+
+<router-outlet></router-outlet>
 
 

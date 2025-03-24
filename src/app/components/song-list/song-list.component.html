@@ -1,10 +1,10 @@
 <div class="song-list-container">
-  <h2>Songs</h2>
+  <h2>{{ 'SONGS.TITLE' | translate }}</h2>
 
-  <div *ngIf="loading" data-testid="loading-indicator">Loading...</div>
+  <div *ngIf="loading" data-testid="loading-indicator">{{ 'COMMON.LOADING' | translate }}</div>
 
   <div *ngIf="error" class="error-message" data-testid="error-message">
-    {{ error }}
+    {{ 'COMMON.ERROR' | translate }}: {{ error }}
   </div>
 
   <div class="carousel-container" *ngIf="!loading && !error">
@@ -17,9 +17,9 @@
           </div>
           <div class="song-title">{{ song.title }}</div>
           <div class="song-details">
-            <span>Year: {{ song.year }}</span>
-            <span>Rating: {{ song.rating }}</span>
-            <span>Duration: {{ song.duration }} seconds</span>
+            <span>{{ 'SONGS.YEAR' | translate }}: {{ song.year }}</span>
+            <span>{{ 'SONGS.RATING' | translate }}: {{ song.rating }}</span>
+            <span>{{ 'SONGS.DURATION' | translate }}: {{ song.duration }} {{ 'SONGS.SECONDS' | translate }}</span>
           </div>
           <!-- Para los elementos clonados al inicio -->
           <div class="song-genres">
@@ -29,9 +29,9 @@
             <span *ngIf="song.genre.length > 2" class="genre-tag more-tag">+{{ song.genre.length - 2 }}</span>
           </div>
           <div class="song-actions">
-            <button class="info-btn" (click)="openInfoModal(song)">Info</button>
-            <button class="edit-btn" (click)="openEditModal(song)">Edit</button>
-            <button class="delete-btn" (click)="deleteSong(song.id)">Delete</button>
+            <button class="info-btn" (click)="openInfoModal(song)">{{ 'COMMON.INFO' | translate }}</button>
+            <button class="edit-btn" (click)="openEditModal(song)">{{ 'COMMON.EDIT' | translate }}</button>
+            <button class="delete-btn" (click)="deleteSong(song.id)">{{ 'COMMON.DELETE' | translate }}</button>
           </div>
         </div>
 
@@ -42,9 +42,9 @@
           </div>
           <div class="song-title">{{ song.title }}</div>
           <div class="song-details">
-            <span>Year: {{ song.year }}</span>
-            <span>Rating: {{ song.rating }}</span>
-            <span>Duration: {{ song.duration }} seconds</span>
+            <span>{{ 'SONGS.YEAR' | translate}}: {{ song.year }}</span>
+            <span>{{ 'SONGS.RATING' | translate}}: {{ song.rating }}</span>
+            <span>{{ 'SONGS.DURATION' | translate}}: {{ song.duration }} {{ 'SONGS.SECONDS' | translate }}</span>
           </div>
           <!-- Para los elementos originales -->
           <div class="song-genres">
@@ -54,9 +54,9 @@
             <span *ngIf="song.genre.length > 2" class="genre-tag more-tag">+{{ song.genre.length - 2 }}</span>
           </div>
           <div class="song-actions">
-            <button class="info-btn" (click)="openInfoModal(song)">Info</button>
-            <button class="edit-btn" (click)="openEditModal(song)">Edit</button>
-            <button class="delete-btn" (click)="deleteSong(song.id)">Delete</button>
+            <button class="info-btn" (click)="openInfoModal(song)">{{ 'COMMON.INFO' | translate}}</button>
+            <button class="edit-btn" (click)="openEditModal(song)">{{ 'COMMON.EDIT' | translate}}</button>
+            <button class="delete-btn" (click)="deleteSong(song.id)">{{ 'COMMON.DELETE' | translate}}</button>
           </div>
         </div>
 
@@ -67,9 +67,9 @@
           </div>
           <div class="song-title">{{ song.title }}</div>
           <div class="song-details">
-            <span>Year: {{ song.year }}</span>
-            <span>Rating: {{ song.rating }}</span>
-            <span>Duration: {{ song.duration }} seconds</span>
+            <span>{{ 'SONGS.YEAR' | translate}}: {{ song.year }}</span>
+            <span>{{ 'SONGS.RATING' | translate}}: {{ song.rating }}</span>
+            <span>{{ 'SONGS.DURATION' | translate}}: {{ song.duration }} {{ 'SONGS.SECONDS' | translate }}</span>
           </div>
           <!-- Para los elementos clonados al final -->
           <div class="song-genres">
@@ -79,9 +79,9 @@
             <span *ngIf="song.genre.length > 2" class="genre-tag more-tag">+{{ song.genre.length - 2 }}</span>
           </div>
           <div class="song-actions">
-            <button class="info-btn" (click)="openInfoModal(song)">Info</button>
-            <button class="edit-btn" (click)="openEditModal(song)">Edit</button>
-            <button class="delete-btn" (click)="deleteSong(song.id)">Delete</button>
+            <button class="info-btn" (click)="openInfoModal(song)">{{ 'COMMON.INFO' | translate}}</button>
+            <button class="edit-btn" (click)="openEditModal(song)">{{ 'COMMON.EDIT' | translate}}</button>
+            <button class="delete-btn" (click)="deleteSong(song.id)">{{ 'COMMON.DELETE' | translate}}</button>
           </div>
         </div>
       </div>
@@ -96,10 +96,10 @@
 <!-- Modal de edición -->
 <div class="modal-overlay" *ngIf="showEditModal" (click)="closeModal($event)">
   <div class="modal-content" (click)="$event.stopPropagation()">
-    <h3>Edit Song</h3>
+    <h3>{{ 'SONGS.EDIT_SONG' | translate}}</h3>
     <form [formGroup]="songForm" (ngSubmit)="saveSong()">
       <div class="form-group">
-        <label for="title">Title</label>
+        <label for="title">{{ 'SONGS.TITLE' | translate}}</label>
         <input type="text" id="title" formControlName="title">
         <div class="error-message" *ngIf="songForm.get('title')?.invalid && songForm.get('title')?.touched">
           Title is required
@@ -107,7 +107,7 @@
       </div>
 
       <div class="form-group">
-        <label for="year">Year</label>
+        <label for="year">{{ 'SONGS.YEAR' | translate}}</label>
         <input type="number" id="year" formControlName="year">
         <div class="error-message" *ngIf="songForm.get('year')?.invalid && songForm.get('year')?.touched">
           Valid year is required
@@ -115,7 +115,7 @@
       </div>
 
       <div class="form-group">
-        <label for="duration">Duration (seconds)</label>
+        <label for="duration">{{ 'SONGS.DURATION' | translate}}</label>
         <input type="number" id="duration" formControlName="duration">
         <div class="error-message" *ngIf="songForm.get('duration')?.invalid && songForm.get('duration')?.touched">
           Valid duration is required
@@ -123,7 +123,7 @@
       </div>
 
       <div class="form-group">
-        <label for="rating">Rating</label>
+        <label for="rating">{{ 'SONGS.RATING' | translate}}</label>
         <input type="number" id="rating" formControlName="rating" step="0.01" min="0" max="10">
         <div class="error-message" *ngIf="songForm.get('rating')?.invalid && songForm.get('rating')?.touched">
           Rating must be between 0 and 10
@@ -131,12 +131,12 @@
       </div>
 
       <div class="form-group">
-        <label for="poster">Poster URL</label>
+        <label for="poster">{{ 'SONGS.POSTER' | translate }}</label>
         <input type="text" id="poster" formControlName="poster">
       </div>
 
       <div class="form-group">
-        <label>Genres</label>
+        <label>{{ 'SONGS.GENRE' | translate }}</label>
         <div class="genres-container">
           <div *ngFor="let genre of availableGenres; let i = index" class="genre-checkbox">
             <input type="checkbox" [id]="'genre-' + i" [value]="genre" (change)="onGenreChange($event)"
@@ -147,8 +147,8 @@
       </div>
 
       <div class="form-actions">
-        <button type="button" class="cancel-btn" (click)="closeModal()">Cancel</button>
-        <button type="submit" class="save-btn" [disabled]="songForm.invalid">Save</button>
+        <button type="button" class="cancel-btn" (click)="closeModal()">{{ 'COMMON.CANCEL' | translate }}</button>
+        <button type="submit" class="save-btn" [disabled]="songForm.invalid">{{ 'COMMON.SAVE' | translate }}</button>
       </div>
     </form>
   </div>
@@ -158,11 +158,11 @@
 <!-- Modal de confirmación de eliminación -->
 <div class="modal-overlay" *ngIf="showDeleteConfirmModal">
   <div class="modal-content confirm-modal">
-    <h3>Confirm Deletion</h3>
-    <p>Are you sure you want to delete this song?</p>
+    <h3>{{ 'SONGS.DELETE_SONG' | translate }}</h3>
+    <p>{{ 'SONGS.CONFIRM_DELETE' | translate }}</p>
     <div class="form-actions">
-      <button type="button" class="cancel-btn" (click)="cancelDelete()">Cancel</button>
-      <button type="button" class="delete-confirm-btn" (click)="confirmDelete()">Delete</button>
+      <button type="button" class="cancel-btn" (click)="cancelDelete()">{{ 'COMMON.CANCEL' | translate }}</button>
+      <button type="button" class="delete-confirm-btn" (click)="confirmDelete()">{{ 'COMMON.DELETE' | translate }}</button>
     </div>
   </div>
 </div>
@@ -171,10 +171,10 @@
 <div class="modal-overlay" *ngIf="showDeleteSuccessModal">
   <div class="modal-content success-modal">
     <div class="success-icon">✓</div>
-    <h3>Success!</h3>
-    <p>The song has been deleted successfully.</p>
+    <h3>{{ 'COMMON.SUCCESS' | translate }}</h3>
+    <p>{{ 'SONGS.DELETE_SUCCESS' | translate }}</p>
     <div class="form-actions">
-      <button class="success-btn" (click)="reloadPage()">Accept</button>
+      <button class="success-btn" (click)="reloadPage()">{{ 'COMMON.ACCEPT' }}</button>
     </div>
   </div>
 </div>
@@ -205,35 +205,35 @@
 
       <div class="info-details">
         <div class="info-row">
-          <span class="info-label">Year:</span>
+          <span class="info-label">{{ 'SONGS.YEAR' | translate }}:</span>
           <span class="info-value">{{ selectedSong.year }}</span>
         </div>
 
         <div class="info-row">
-          <span class="info-label">Rating:</span>
+          <span class="info-label">{{ 'SONGS.RATING' | translate }}:</span>
           <span class="info-value">{{ selectedSong.rating }} / 10</span>
         </div>
 
         <div class="info-row">
-          <span class="info-label">Duration:</span>
-          <span class="info-value">{{ selectedSong.duration }} seconds ({{ formatDuration(selectedSong.duration)
+          <span class="info-label">{{ 'SONGS.DURATION' | translate }}:</span>
+          <span class="info-value">{{ selectedSong.duration }} {{ 'SONGS.SECONDS' | translate }} ({{ formatDuration(selectedSong.duration)
             }})</span>
         </div>
 
         <div class="info-row">
-          <span class="info-label">Genres:</span>
+          <span class="info-label">{{ 'SONGS.GENRE' | translate }}:</span>
           <div class="info-genres">
             <span *ngFor="let genre of selectedSong.genre" class="genre-tag">{{ genre }}</span>
           </div>
         </div>
 
         <div class="info-row" *ngIf="selectedSong.artist">
-          <span class="info-label">Artist:</span>
+          <span class="info-label">{{ 'SONGS.ARTIST' | translate }}:</span>
           <div *ngIf="selectedArtist; else loadingArtist" class="artist-info">
             <div class="artist-name">{{ selectedArtist.name }}</div>
             <div class="artist-details">
-              <span>Country: {{ selectedArtist.bornCity }}</span>
-              <span *ngIf="selectedArtist.birthdate">Birthdate: {{ selectedArtist.birthdate | date }}</span>
+              <span>{{ 'ARTISTS.COUNTRY' | translate }}: {{ selectedArtist.bornCity }}</span>
+              <span *ngIf="selectedArtist.birthdate">{{ 'ARTISTS.BIRTHDATE' | translate }}: {{ selectedArtist.birthdate | date }}</span>
             </div>
           </div>
           <ng-template #loadingArtist>
@@ -243,7 +243,7 @@
       </div>
     </div>
     <div class="form-actions">
-      <button class="close-btn" (click)="closeInfoModal()">Close</button>
+      <button class="close-btn" (click)="closeInfoModal()">{{ 'COMMON.CLOSE' | translate }}</button>
     </div>
   </div>
 </div>

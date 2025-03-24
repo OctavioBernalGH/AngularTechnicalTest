@@ -2,13 +2,14 @@ import { Component, OnInit, ViewChild, ElementRef, OnDestroy, AfterViewInit } fr
 import { CommonModule } from '@angular/common';
 import { Artist } from '../../models/artist.model';
 import { ArtistService } from '../../services/artist.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-artist-list',
   templateUrl: './artist-list.component.html',
   styleUrls: ['./artist-list.component.css'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule, TranslateModule]
 })
 export class ArtistListComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('carouselWrapper') carouselWrapper!: ElementRef;
@@ -67,11 +68,7 @@ export class ArtistListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   createClones(): void {
     if (this.artists.length === 0) return;
-    
-    // Clonar los primeros elementos para colocarlos al final
     this.clonedArtistsStart = this.artists.slice(0, Math.min(this.cloneCount, this.artists.length));
-    
-    // Clonar los últimos elementos para colocarlos al inicio
     this.clonedArtistsEnd = this.artists.slice(
       Math.max(0, this.artists.length - this.cloneCount), 
       this.artists.length

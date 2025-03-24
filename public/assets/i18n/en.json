@@ -1,0 +1,49 @@
+{
+  "COMMON": {
+    "LOADING": "Loading...",
+    "ERROR": "An error occurred",
+    "CLOSE": "Close",
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "INFO": "Info",
+    "SUCCESS": "Success!",
+    "ACCEPT": "Accept"
+  },
+  "SONGS": {
+    "TITLE": "Songs",
+    "YEAR": "Year",
+    "DURATION": "Duration",
+    "SECONDS": "seconds",
+    "RATING": "Rating",
+    "GENRE": "Genre",
+    "ARTIST": "Artist",
+    "POSTER": "URL Poster",
+    "EDIT_SONG": "Edit Song",
+    "DELETE_SONG": "Delete Song",
+    "SONG_INFO": "Song Information",
+    "CONFIRM_DELETE": "Are you sure you want to delete this song?",
+    "DELETE_SUCCESS": "Song deleted successfully",
+    "UPDATE_SUCCESS": "Song updated successfully"
+  },
+  "ARTISTS": {
+    "TITLE": "Artists",
+    "COUNTRY": "Country",
+    "BIRTHDATE": "Birthdate",
+    "RATING": "Rating",
+    "ARTIST_INFO": "Artist Information",
+    "NAME": "Name",
+    "SONGS": "Songs"
+  },
+  "COMPANIES": {
+    "TITLE": "Record companies",
+    "NAME": "Name",
+    "COUNTRY": "Country",
+    "RATING": "Rating",
+    "COMPANY_INFO": "Company Information",
+    "FOUNDED": "Founded",
+    "EMPLOYEES": "Employees",
+    "SONGS": "Songs"
+  }
+}
